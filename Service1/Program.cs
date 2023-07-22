@@ -1,5 +1,7 @@
 using System.Reflection;
 using Serilog;
+using Service1.Cache;
+using Service1.Cache.Contracts;
 using Service1.Configuration;
 using Service1.Extensions;
 using Service1.Models;
@@ -17,6 +19,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.Configure<CacheConfigure>(builder.Configuration.GetSection("CacheConfigure"));
     builder.Services.AddScoped<RepositoryContext>();
     builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+    builder.Services.AddScoped<ICacheManager, CacheManager>();
+    builder.Services.AddScoped<ICacheBase, CacheBase>();
     builder.Services.AddScoped<IServiceManager, ServiceManager>();
     builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
     builder.Services.AddCors(CorsConfiguration.Configure);
