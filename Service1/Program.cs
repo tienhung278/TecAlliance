@@ -14,11 +14,13 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
     builder.Services.Configure<DataStore>(builder.Configuration.GetSection("DataStore"));
+    builder.Services.Configure<CacheConfigure>(builder.Configuration.GetSection("CacheConfigure"));
     builder.Services.AddScoped<RepositoryContext>();
     builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
     builder.Services.AddScoped<IServiceManager, ServiceManager>();
     builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
     builder.Services.AddCors(CorsConfiguration.Configure);
+    builder.Services.AddMemoryCache();
     builder.Host.UseSerilog(SeriLoggerConfiguration.Configure);
 }
 
