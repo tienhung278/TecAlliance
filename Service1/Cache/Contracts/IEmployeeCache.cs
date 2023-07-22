@@ -5,5 +5,6 @@ namespace Service1.Cache.Contracts;
 public interface IEmployeeCache
 {
     ICollection<Employee>? GetEmployees();
+    void SetEmployees(ICollection<Employee> employees);
     void ClearCache();
 }

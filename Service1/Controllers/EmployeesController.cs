@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Service1.Cache.Contracts;
 using Service1.Models.Dtos;
 using Service1.Services.Contracts;
 
@@ -9,15 +8,12 @@ namespace Service1.Controllers;
 [ApiController]
 public class EmployeesController : Controller
 {
-    private readonly ILogger<EmployeesController> _logger;
     private readonly IEmployeeServices _employeeServices;
-    private readonly IEmployeeCache _employeeCache;
+    private readonly ILogger<EmployeesController> _logger;
 
-    public EmployeesController(ICacheManager cacheManager, 
-        IServiceManager serviceManager, 
+    public EmployeesController(IServiceManager serviceManager,
         ILogger<EmployeesController> logger)
     {
-        _employeeCache = cacheManager.EmployeeCache;
         _logger = logger;
         _employeeServices = serviceManager.EmployeeServices;
     }
@@ -25,7 +21,7 @@ public class EmployeesController : Controller
     [HttpGet]
     public ActionResult Get()
     {
-        var employees = _employeeCache.GetEmployees();
+        var employees = _employeeServices.GetEmployees();
         return Ok(employees);
     }
 
