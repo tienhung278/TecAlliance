@@ -3,15 +3,15 @@ using Service1.Cache.Contracts;
 
 namespace Service1.Cache;
 
-public class CacheBase : ICacheBase
+public class CacheContext : ICacheContext
 {
     private readonly IMemoryCache _cache;
 
-    public CacheBase(IMemoryCache cache)
+    public CacheContext(IMemoryCache cache)
     {
         _cache = cache;
     }
-    
+
     public T? GetCache<T>(string key) where T : class
     {
         _cache.TryGetValue(key, out T? cachedResponse);

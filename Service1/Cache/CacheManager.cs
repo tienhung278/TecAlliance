@@ -8,10 +8,10 @@ public class CacheManager : ICacheManager
 {
     private readonly Lazy<IEmployeeCache> _lazyEmployeeCache;
 
-    public CacheManager(ICacheBase cacheBase,
+    public CacheManager(ICacheContext cacheContext,
         IOptions<CacheConfigure> configure)
     {
-        _lazyEmployeeCache = new Lazy<IEmployeeCache>(() => new EmployeeCache(cacheBase, configure));
+        _lazyEmployeeCache = new Lazy<IEmployeeCache>(() => new EmployeeCache(cacheContext, configure));
     }
 
     public IEmployeeCache EmployeeCache => _lazyEmployeeCache.Value;

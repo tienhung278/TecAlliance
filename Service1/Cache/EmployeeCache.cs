@@ -8,12 +8,12 @@ namespace Service1.Cache;
 
 public class EmployeeCache : IEmployeeCache
 {
-    private readonly ICacheBase _cacheBase;
+    private readonly ICacheContext _cacheContext;
     private readonly MemoryCacheEntryOptions _cacheEntryOptions;
 
-    public EmployeeCache(ICacheBase cacheBase, IOptions<CacheConfigure> configuration)
+    public EmployeeCache(ICacheContext cacheContext, IOptions<CacheConfigure> configuration)
     {
-        _cacheBase = cacheBase;
+        _cacheContext = cacheContext;
         var cacheConfigure = configuration.Value;
         _cacheEntryOptions = new MemoryCacheEntryOptions()
             .SetSlidingExpiration(TimeSpan.FromSeconds(cacheConfigure.SlidingExpiration))
@@ -22,16 +22,16 @@ public class EmployeeCache : IEmployeeCache
 
     public ICollection<Employee>? GetEmployees()
     {
-        return _cacheBase.GetCache<ICollection<Employee>>(CacheKeys.Employees);
+        return _cacheContext.GetCache<ICollection<Employee>>(CacheKeys.Employees);
     }
 
     public void SetEmployees(ICollection<Employee> employees)
     {
-        _cacheBase.SetCache(CacheKeys.Employees, employees, _cacheEntryOptions);
+        _cacheContext.SetCache(CacheKeys.Employees, employees, _cacheEntryOptions);
     }
 
     public void ClearCache()
     {
-        _cacheBase.ClearCache(CacheKeys.Employees);
+        _cacheContext.ClearCache(CacheKeys.Employees);
     }
 }

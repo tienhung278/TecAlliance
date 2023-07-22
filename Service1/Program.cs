@@ -20,7 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddScoped<IRepositoryContext, RepositoryContext>();
     builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
     builder.Services.AddScoped<ICacheManager, CacheManager>();
-    builder.Services.AddScoped<ICacheBase, CacheBase>();
+    builder.Services.AddScoped<ICacheContext, CacheContext>();
     builder.Services.AddScoped<IServiceManager, ServiceManager>();
     builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
     builder.Services.AddCors(CorsConfiguration.Configure);
