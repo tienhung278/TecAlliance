@@ -7,7 +7,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {
     private readonly List<T>? _store;
 
-    public RepositoryBase(RepositoryContext repositoryContext)
+    public RepositoryBase(IRepositoryContext repositoryContext)
     {
         _store = repositoryContext.Set<T>();
     }
@@ -36,11 +36,13 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         var updatedObj = entity as dynamic;
         var currentObj = _store?.Find(o => (o as dynamic).Id == updatedObj.Id);
-        
+
         if (currentObj != null)
         {
             Delete(currentObj);
             Create(updatedObj);
-        };
+        }
+
+        ;
     }
 }

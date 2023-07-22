@@ -5,7 +5,7 @@ namespace Service1.Repositories;
 
 public class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
 {
-    public EmployeeRepository(RepositoryContext repositoryContext) : base(repositoryContext)
+    public EmployeeRepository(IRepositoryContext repositoryContext) : base(repositoryContext)
     {
     }
 

@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
     builder.Services.Configure<DataStore>(builder.Configuration.GetSection("DataStore"));
     builder.Services.Configure<CacheConfigure>(builder.Configuration.GetSection("CacheConfigure"));
-    builder.Services.AddScoped<RepositoryContext>();
+    builder.Services.AddScoped<IRepositoryContext, RepositoryContext>();
     builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
     builder.Services.AddScoped<ICacheManager, CacheManager>();
     builder.Services.AddScoped<ICacheBase, CacheBase>();

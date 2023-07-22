@@ -1,15 +1,16 @@
 using System.Text.Json;
 using Microsoft.Extensions.Options;
 using Service1.Models;
+using Service1.Repositories.Contracts;
 
 namespace Service1.Repositories;
 
-public class RepositoryContext
+public class RepositoryContext : IRepositoryContext
 {
-    private object? _store;
-    private string? _fileName;
     private readonly string? _folder;
     private readonly Dictionary<string, object?> _stores;
+    private string? _fileName;
+    private object? _store;
 
     public RepositoryContext(IOptions<DataStore> configuration)
     {
@@ -30,7 +31,7 @@ public class RepositoryContext
         {
             _store = new List<T>();
         }
-        
+
         _stores.Add(_fileName, _store);
 
         return _store as List<T>;
@@ -42,9 +43,9 @@ public class RepositoryContext
         {
             var fileName = store.Key;
             var s = store.Value;
-            
+
             var json = JsonSerializer.Serialize(_store);
-        
+
             if (_fileName != null)
             {
                 File.WriteAllText(_fileName, json);
