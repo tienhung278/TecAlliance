@@ -53,7 +53,7 @@ public class EmployeeServices : IEmployeeServices
         }
         if (employee == null)
         {
-            throw new ArgumentException("Employee is required");
+            throw new NullReferenceException("Employee is required");
         }
         var empl = _mapper.Map<Employee>(employee);
         empl.Id = id;
