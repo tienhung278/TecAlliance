@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service1", "Service1\Service1.csproj", "{AD7A13AC-6AE1-496F-9640-8ECF97200157}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service1.API", "Service1.API\Service1.API.csproj", "{AD7A13AC-6AE1-496F-9640-8ECF97200157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service1.Test", "Service1.Test\Service1.Test.csproj", "{CA23AFD4-20AB-4C87-B82A-5607BC3E476C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service1.TEST", "Service1.TEST\Service1.TEST.csproj", "{CA23AFD4-20AB-4C87-B82A-5607BC3E476C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service2", "Service2\Service2.csproj", "{9671B22A-19F9-4A67-9D8D-505CAA8D8D58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service2.SERVICE", "Service2.SERVICE\Service2.SERVICE.csproj", "{9671B22A-19F9-4A67-9D8D-505CAA8D8D58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
