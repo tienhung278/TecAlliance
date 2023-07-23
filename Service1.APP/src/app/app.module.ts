@@ -8,6 +8,7 @@ import { InternalServerComponent } from './components/internal-server/internal-s
 import {MenuComponent} from "./components/menu/menu.component";
 import {HomeComponent} from "./components/home/home.component";
 import { SuccessComponent } from './shared/components/success/success.component';
+import { ErrorComponent } from './shared/components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SuccessComponent } from './shared/components/success/success.component'
     HomeComponent,
     NotFoundComponent,
     InternalServerComponent,
-    SuccessComponent
+    SuccessComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
