@@ -4,6 +4,7 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {InternalServerComponent} from "./components/internal-server/internal-server.component";
 import {SuccessComponent} from "./components/success/success.component";
 import {ErrorComponent} from "./components/error/error.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {ErrorComponent} from "./components/error/error.component";
     ErrorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
     NotFoundComponent,
