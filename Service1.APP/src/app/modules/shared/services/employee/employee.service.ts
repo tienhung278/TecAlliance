@@ -24,8 +24,8 @@ export class EmployeeService {
     return this.client.post<Employee>(this.baseUrl + "/employees", body, { headers: { "Content-Type": "application/json" }});
   }
 
-  public updateEmployee(body: any): Observable<any> {
-    return this.client.put<any>(this.baseUrl + "/employees", body, { headers: { "Content-Type": "application/json" }});
+  public updateEmployee(id: string, body: any): Observable<any> {
+    return this.client.put<any>(this.baseUrl + "/employees/" + id, body, { headers: { "Content-Type": "application/json" }});
   }
 
   public deleteEmployee(id: string): Observable<any> {
