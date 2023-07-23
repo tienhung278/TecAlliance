@@ -1,25 +1,33 @@
+using Serilog;
+using Service1.Models.Dtos;
+using Service2.BackgroundTasks;
+using Service2.Configuration;
+using Service2.Services;
+using Service2.Services.Contracts;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+    builder.Services.AddHttpClient();
+    builder.Services.AddSingleton<IReportServices, ReportServices>();
+    builder.Services.Configure<ServiceUrl>(builder.Configuration.GetSection("ServiceUrl"));
+    builder.Services.Configure<TimeDelay>(builder.Configuration.GetSection("TimeDelay"));
+    builder.Services.AddHostedService<ReportTask>();
+    builder.Host.UseSerilog(SeriLoggerConfiguration.Configure);
 }
 
-app.UseHttpsRedirection();
+var app = builder.Build();
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
+}
