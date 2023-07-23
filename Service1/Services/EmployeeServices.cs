@@ -9,7 +9,7 @@ namespace Service1.Services;
 
 public class EmployeeServices : IEmployeeServices
 {
-    private static readonly object lockObj = new object();
+    private static readonly object lockObj = new();
     private readonly IEmployeeCache _employeeCache;
     private readonly IEmployeeRepository _employeeRepository;
     private readonly IMapper _mapper;
@@ -28,10 +28,7 @@ public class EmployeeServices : IEmployeeServices
     public ICollection<EmployeeReadDto> GetEmployees()
     {
         var employees = _employeeCache.GetEmployees();
-        if (employees != null)
-        {
-            return _mapper.Map<ICollection<EmployeeReadDto>>(employees);
-        }
+        if (employees != null) return _mapper.Map<ICollection<EmployeeReadDto>>(employees);
 
         try
         {

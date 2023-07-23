@@ -46,10 +46,7 @@ public class RepositoryContext : IRepositoryContext
 
             var json = JsonSerializer.Serialize(_store);
 
-            if (_fileName != null)
-            {
-                File.WriteAllText(_fileName, json);
-            }
+            if (_fileName != null) File.WriteAllText(_fileName, json);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Service1.Configuration;
 
 public static class CorsConfiguration
 {
-    public static Action<CorsOptions> Configure => (options =>
+    public static Action<CorsOptions> Configure => options =>
     {
         options.AddDefaultPolicy(policyBuilder =>
         {
@@ -12,5 +12,5 @@ public static class CorsConfiguration
             policyBuilder.AllowAnyHeader();
             policyBuilder.AllowAnyOrigin();
         });
-    });
+    };
 }

@@ -15,7 +15,7 @@ public class CacheContext : ICacheContext
     public T? GetCache<T>(string key) where T : class
     {
         _cache.TryGetValue(key, out T? cachedResponse);
-        return cachedResponse as T;
+        return cachedResponse;
     }
 
     public void SetCache<T>(string key, T value, MemoryCacheEntryOptions options) where T : class
