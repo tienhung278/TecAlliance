@@ -7,6 +7,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InternalServerComponent } from './components/internal-server/internal-server.component';
 import {MenuComponent} from "./components/menu/menu.component";
 import {HomeComponent} from "./components/home/home.component";
+import { SuccessComponent } from './shared/components/success/success.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {HomeComponent} from "./components/home/home.component";
     MenuComponent,
     HomeComponent,
     NotFoundComponent,
-    InternalServerComponent
+    InternalServerComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
